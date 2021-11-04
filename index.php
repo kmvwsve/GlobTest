@@ -1,9 +1,8 @@
 <?php  
 
 function foo($array) {
-	$isBreak = false;
 	$return = [];
-
+	
 	if($array) {
 		// Init min & max
 		$min = min(current($array));
@@ -11,11 +10,11 @@ function foo($array) {
 
 		foreach ($array as $arr) {
 			// Vérifier si l'intervalle est coupé
-			if(min($arr) > $max || max($arr) < $min) {
-				$isBreak = true;
-			}
-
-			if(!$isBreak) {			
+			if(min($arr) > $max || max($arr) < $min) {			
+				$return[] = [$min, $max];
+				$min = min($arr);
+				$max = max($arr);				
+			} else {
 				// Valeur min
 				if(min($arr) < $min) {
 					$min = min($arr);
@@ -25,16 +24,10 @@ function foo($array) {
 				if(max($arr) > $max) {
 					$max = max($arr);
 				}
-			} else {
-				$isBreak = false;
-				$return[] = [$min, $max];
-				$min = min($arr);
-				$max = max($arr);
 			}
 		}
 
 		$return[] = [$min, $max];
-
 		sort($return);		
 	}
 
