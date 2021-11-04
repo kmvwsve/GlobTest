@@ -19,7 +19,7 @@ Le challenge, si vous l'acceptez, serait d'aider Echo à comprendre ce que fait 
 
 Expliquez, en quelques lignes, ce que fait cette fonction.
 #### Réponse :
-##### Cette fonction qui permet de récupérer un/des intervalle(s) à partir des intervalles données. 
+##### Cette fonction qui permet de récupérer un/des intervalle(s) maximal à partir des intervalles données. 
 
 ### Question 2
 
