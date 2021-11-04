@@ -2,7 +2,7 @@
 
 function foo($array) {
 	$return = [];
-	
+
 	if($array) {
 		// Init min & max
 		$min = min(current($array));
@@ -49,6 +49,7 @@ $test6 = [[3, 6], [3, 4], [15, 20], [16, 17], [-10, 4], [6, 10], [3, 6]]; // né
 $test7 = [[3, 6], [3, 4], [15, 20], [16, 17], [0, 10000], [1, 4], [6, 10], [3, 6]]; // 0 - 10000
 $test8 = [[3, 6], [3, 4], [15, 20], [16, 17], [1, 4], [6, 10], [3, 6], [-1, 0], [50, 100]]; // plus intervalles
 $test9 = [[8, 7], [6, 3], [2, 4]]; // inverse 
+$test10 = [8, 7]; // Bug 
 
 echo "Results : <br>";
 echo json_encode($test1)." -> ".json_encode(foo($test1))."<br>";
@@ -60,6 +61,7 @@ echo json_encode($test6)." -> ".json_encode(foo($test6))."<br>";
 echo json_encode($test7)." -> ".json_encode(foo($test7))."<br>";
 echo json_encode($test8)." -> ".json_encode(foo($test8))."<br>";
 echo json_encode($test9)." -> ".json_encode(foo($test9))."<br>";
+echo json_encode($test10)." -> ".json_encode(foo($test10))."<br>";
 
 // Outputs
 // Results :
@@ -72,5 +74,7 @@ echo json_encode($test9)." -> ".json_encode(foo($test9))."<br>";
 // [[3,6],[3,4],[15,20],[16,17],[0,10000],[1,4],[6,10],[3,6]] -> [[0,10000]]
 // [[3,6],[3,4],[15,20],[16,17],[1,4],[6,10],[3,6],[-1,0],[50,100]] -> [[-1,0],[1,10],[15,20],[50,100]]
 // [[8,7],[6,3],[2,4]] -> [[2,6],[7,8]]
+// [8,7] -> [[null,null]]Warning: max(): When only one parameter is given
+
 
 ?>
