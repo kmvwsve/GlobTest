@@ -6,36 +6,30 @@ function foo($array) {
 
 	if($array) {
 		// Init min & max
-		$min = $array[0][0];
-		$max = $array[0][1];
+		$min = min(current($array));
+		$max = max(current($array));
 
 		foreach ($array as $arr) {
-
-			// On considère que soit [a, b], et a < b
-			if($arr[0] > $arr[1]) {
-				exit("ERROR array elements!");
-			}
-
 			// Vérifier si l'intervalle est coupé
-			if($arr[0] > $max || $arr[1] < $min) {
+			if(min($arr) > $max || max($arr) < $min) {
 				$isBreak = true;
 			}
 
-			// Valeur min
-			if($arr[0] <= $min && !$isBreak) {
-				$min = $arr[0];
-			}
+			if(!$isBreak) {			
+				// Valeur min
+				if(min($arr) < $min) {
+					$min = min($arr);
+				}
 
-			// Valeur max
-			if($arr[1] >= $max && !$isBreak) {
-				$max = $arr[1];
-			}
-
-			if($isBreak) {
+				// Valeur max
+				if(max($arr) > $max) {
+					$max = max($arr);
+				}
+			} else {
 				$isBreak = false;
 				$return[] = [$min, $max];
-				$min = $arr[0];
-				$max = $arr[1];
+				$min = min($arr);
+				$max = max($arr);
 			}
 		}
 
@@ -61,6 +55,7 @@ $test5 = [[3, 6], [3, 4], [15, 20], [16, 17], [1, 4], [6, 10], [3, 6]];
 $test6 = [[3, 6], [3, 4], [15, 20], [16, 17], [-10, 4], [6, 10], [3, 6]]; // négative
 $test7 = [[3, 6], [3, 4], [15, 20], [16, 17], [0, 10000], [1, 4], [6, 10], [3, 6]]; // 0 - 10000
 $test8 = [[3, 6], [3, 4], [15, 20], [16, 17], [1, 4], [6, 10], [3, 6], [-1, 0], [50, 100]]; // plus intervalles
+$test9 = [[8, 7], [6, 3], [2, 4]]; // inverse 
 
 echo "Results : <br>";
 echo json_encode($test1)." -> ".json_encode(foo($test1))."<br>";
@@ -71,6 +66,7 @@ echo json_encode($test5)." -> ".json_encode(foo($test5))."<br>";
 echo json_encode($test6)." -> ".json_encode(foo($test6))."<br>";
 echo json_encode($test7)." -> ".json_encode(foo($test7))."<br>";
 echo json_encode($test8)." -> ".json_encode(foo($test8))."<br>";
+echo json_encode($test9)." -> ".json_encode(foo($test9))."<br>";
 
 // Outputs
 // Results :
@@ -82,5 +78,6 @@ echo json_encode($test8)." -> ".json_encode(foo($test8))."<br>";
 // [[3,6],[3,4],[15,20],[16,17],[-10,4],[6,10],[3,6]] -> [[-10,10],[15,20]]
 // [[3,6],[3,4],[15,20],[16,17],[0,10000],[1,4],[6,10],[3,6]] -> [[0,10000]]
 // [[3,6],[3,4],[15,20],[16,17],[1,4],[6,10],[3,6],[-1,0],[50,100]] -> [[-1,0],[1,10],[15,20],[50,100]]
+// [[8,7],[6,3],[2,4]] -> [[2,6],[7,8]]
 
 ?>
