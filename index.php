@@ -9,7 +9,6 @@ function foo($array) {
 		$min = $array[0][0];
 		$max = $array[0][1];
 
-		// Vérifier si l'intervalle est coupé
 		foreach ($array as $arr) {
 
 			// On considère que soit [a, b], et a < b
@@ -17,14 +16,17 @@ function foo($array) {
 				exit("ERROR array elements!");
 			}
 
+			// Vérifier si l'intervalle est coupé
 			if( $arr[0] > $max || $arr[1] < $min ) {
 				$isBreak = true;
 			}
 
+			// Valeur min
 			if($arr[0] <= $min && !$isBreak) {
 				$min = $arr[0];
 			}
-
+			
+			// Valeur max
 			if($arr[1] >= $max && !$isBreak) {
 				$max = $arr[1];
 			}
