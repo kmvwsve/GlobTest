@@ -74,7 +74,5 @@ echo json_encode($test10)." -> ".json_encode(foo($test10))."<br>";
 // [[3,6],[3,4],[15,20],[16,17],[0,10000],[1,4],[6,10],[3,6]] -> [[0,10000]]
 // [[3,6],[3,4],[15,20],[16,17],[1,4],[6,10],[3,6],[-1,0],[50,100]] -> [[-1,0],[1,10],[15,20],[50,100]]
 // [[8,7],[6,3],[2,4]] -> [[2,6],[7,8]]
-// [8,7] -> [[null,null]]Warning: max(): When only one parameter is given
-
-
+// [8,7] -> [[null,null]] Warning: max(): When only one parameter is given
 ?>
