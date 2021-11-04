@@ -18,6 +18,8 @@ Le challenge, si vous l'acceptez, serait d'aider Echo à comprendre ce que fait 
 ### Question 1
 
 Expliquez, en quelques lignes, ce que fait cette fonction.
+#### Réponse :
+##### Cette fonction qui permet de récupérer un/des intervalle(s) maximal à partir des intervalles données. 
 
 ### Question 2
 
@@ -30,8 +32,5 @@ Merci de fournir un fichier contenant :
 
 ### Question 3
 
-Précisez en combien de temps vous avez implémenté cette fonction.
+Environ 2 heures
 
-## Merci
-
-Par avance, un grand merci pour le temps que vous consacrerez à ce challenge, en espérant vous voir rejoindre très prochainement [nos équipes](https://www.globalis-ms.com/jobs/) ;) 
