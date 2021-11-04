@@ -17,7 +17,7 @@ function foo($array) {
 			}
 
 			// Vérifier si l'intervalle est coupé
-			if( $arr[0] > $max || $arr[1] < $min ) {
+			if($arr[0] > $max || $arr[1] < $min) {
 				$isBreak = true;
 			}
 
@@ -39,9 +39,7 @@ function foo($array) {
 			}
 		}
 
-		if(!$isBreak) {
-			$return[] = [$min, $max];
-		}
+		$return[] = [$min, $max];
 
 		sort($return);		
 	}
